@@ -1,0 +1,179 @@
+@import "../node_modules/bootstrap/scss/functions";
+@import "variables";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
+
+body {
+    min-height: 100%;
+}
+.site-title {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    @include media-breakpoint-down(md) {
+        position: static;
+        height: auto;
+        margin: 5rem 0;
+    }
+    &.slide-left {
+    }
+    .svg-huncwot-clear {
+        max-width: 100% !important;
+    }
+}
+
+.noscroll {
+    overflow: hidden;
+}
+
+.wrap {
+    .info {
+        padding: 3rem;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        transition: 500ms all;
+        z-index: 1;
+        @include media-breakpoint-down(md) {
+            height: auto;
+            padding: 7.5rem 2rem;
+        }
+        .h3 {
+            font-weight: 400;
+        }
+        .rotated-label {
+            position: absolute;
+            top: 4rem;
+            right: 0;
+            transform: rotate(-90deg);
+            font-size: $font-size-sm;
+            margin-bottom: 0;
+            line-height: 1;
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: calc(100% + 15px);
+                margin: auto;
+                height: 1px;
+                width: 72px;
+                background: $body-color;
+            }
+        }
+        footer {
+            .h6 {
+                margin-bottom: 1rem;
+            }
+            ul {
+                margin-bottom: 1rem;
+                li {
+                    font-size: .8rem;
+                    a {
+                        color: $body-color;
+                        &:hover {
+                            text-decoration: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .project {
+        height: 100vh;
+        position: relative;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        transition: 500ms all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        &:first-child {
+            height: 145vh;
+            @include media-breakpoint-down(md) {
+                height: 100vh;
+            }
+        }
+        .project-thumb {
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            position: relative;
+            z-index: 1020;
+            .project-link {
+                text-align: center;
+            }
+        }
+    }
+    &.slide-left {
+        .info, .project {
+            transform: translateX(-100%);
+        }
+    }
+}
+
+.project-details {
+    height: 100vh;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: 500ms all;
+    transform: translateX(100%);
+    @include media-breakpoint-down(md) {
+        width: 100%;
+        padding: 2.5rem;
+    }
+    & > div {
+        display: none;
+        max-width: 365px;
+        margin: auto;
+    }
+    &.show {
+        transform: translateX(0%);
+        & > div {
+            transform: translateX(0%);
+        }
+        .icon-close {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            height: 24px;
+            width: 24px;
+            transition: 300ms all;
+            &:hover {
+                transform: rotate(-90deg);
+            }
+            &:before, &:after {
+                content: "";
+                display: block;
+                width: 32px;
+                height: 1px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin: -1px -16px;
+                background: $gray-900;
+            }
+            &:before {
+                transform: rotate(45deg);
+            }
+            &:after {
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
